@@ -40,7 +40,7 @@ class KthLargest {
     public KthLargest(int k, int[] nums) {
         this.k = k;
         this.minHeap = new int[k+1];
-        /**/
+        /**进入堆*/
         for (int i = 1; i <= k && i <= nums.length; i++){
             this.minHeap[i] = nums[i-1];
             this.last = i;
@@ -65,35 +65,38 @@ class KthLargest {
         /*如果新元素大于堆中第k大的元素（minHeap[1]），则替换它，并将堆有序化*/
         else if(val > minHeap[1]){
             minHeap[1] = val;
-            /*此时处堆尖处无序外,其他部分为有序,所以只需将堆顶下沉即可*/
+            /* 排序 此时处堆尖处无序外,其他部分为有序,所以只需将堆顶下沉即可*/
             sink(1);
         }
+        /*第K大的元素*/
         return minHeap[1];
     }
 
     /**堆的有序化*/
     private void order(){
+        /*K 是堆的大小 i是最后一个非叶子节点*/
         for (int i = k/2; i >=1 ; i--) {
             sink(i);
         }
     }
 
-    /**下沉*/
-    private void sink(int i){
+    /**下沉 小顶堆*/
+    private void sink(int i) {
+        /* 2*i 为子节点  */
         while( 2*i <= k){
             int j = 2*i;
-
+            /* 左右节点选择最大的节点 */
             if ( j < k && minHeap[j] > minHeap[j+1]) {
                 j++;
             }
-
-            if ( minHeap[i] > minHeap[j]){
+            /* 堆顶元素大于子节点 交换 */
+            if ( minHeap[i] > minHeap[j]) {
                 int temp = minHeap[i];
                 minHeap[i] = minHeap[j];
                 minHeap[j] = temp;
 
-                i = j;
-            }else {
+                i = j; // 继续向下找
+            } else {
                 break;
             }
         }
