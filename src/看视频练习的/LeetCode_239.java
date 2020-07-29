@@ -127,7 +127,7 @@ public class LeetCode_239 {
         int [] output = new int[n - k + 1];
         output[0] = nums[max_idx];
 
-        // build output
+        // build output 前面的k个元素已经处理啦
         for (int i  = k; i < n; i++) {
             clean_deque(i, k);
             deq.addLast(i);
