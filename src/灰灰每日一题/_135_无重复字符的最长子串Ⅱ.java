@@ -18,5 +18,6 @@ public class _135_无重复字符的最长子串Ⅱ {
                 set.remove(s.charAt(i++)); // 左边边距开始移动 set减小一个 从i++开始
             }
         }
+        return asn;
     }
 }
