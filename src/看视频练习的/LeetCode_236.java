@@ -48,6 +48,7 @@ public class LeetCode_236 {
         if (root.right != null) {
             // 存储的是右孩子的值和 当前节点
             parent.put(root.right.val, root);
+            dfs(root.right);
         }
     }
 
