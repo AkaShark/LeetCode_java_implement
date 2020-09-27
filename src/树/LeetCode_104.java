@@ -33,6 +33,7 @@ public class LeetCode_104 {
         int size = 0;
 
         while (!queue.isEmpty()) {
+            // 当前这一层的节点数量
             size = queue.size();
             while (size > 0) {
                 TreeNode node = queue.poll();
