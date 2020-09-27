@@ -16,34 +16,6 @@ public class LeetCode_98 {
     }
 
 
-    //    // 获取中序序列 判断序列是否是有序升序的
-//    ArrayList<Integer> list = new ArrayList<>();
-//    // 中序遍历
-//    public boolean isValidBST(TreeNode root) {
-//        // 中序
-//        inOrder(root);
-//        for (int i = 0; i < list.size() - 1; i++) {
-//            if (list.get(i) != Math.min(list.get(i), list.get(i+1)) || list.get(i) == list.get(i+1)) {
-//                return false;
-//            }
-//        }
-//        return true;
-//
-//    }
-//
-//    // 中序 递归实现 左根右
-//    public void inOrder(TreeNode node) {
-//        if (node != null) {
-//            inOrder(node.left);
-//            visit(node);
-//            inOrder(node.right);
-//        }
-//    }
-//
-//    public void visit(TreeNode node) {
-//        list.add(node.val);
-//    }
-
 //    public boolean isValidBST(TreeNode root) {
 //        return helper(root, null, null);
 //    }
@@ -112,6 +84,8 @@ public class LeetCode_98 {
         return isValidBST(root.right);
 
     }
+
+
 
 
 
