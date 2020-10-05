@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class _18_四数之和 {
-//    O(n3)
+    //    O(n3)
     public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(nums);
@@ -19,12 +19,16 @@ public class _18_四数之和 {
                     int sum = nums[i] + nums[j] + nums[left] + nums[right];
                     if (target > sum) left++;
                     else if (target < sum) right--;
-                    else res.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                    else {
+                        res.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        left++;
+                        right--;
+                    }
                 }
             }
         }
 //        去重
-        res  = new ArrayList<>(new HashSet<>(res));
+        res = new ArrayList<>(new HashSet<>(res));
         return res;
     }
 }
