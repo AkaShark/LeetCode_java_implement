@@ -83,4 +83,41 @@ public class LeetCode_501 {
     }
 
 
+    TreeNode pre = null;
+    public void searchBST(TreeNode root) {
+        if (root == null) return;
+
+        searchBST(root.left);
+        if (pre == null) {
+            count = 1;
+        } else if (pre.val == root.val) { // 和前一个值一样
+            count++;
+        } else {
+            count = 1;
+        }
+        pre = root;
+        if (count == maxCount) {
+            answer.add(root.val);
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            answer.clear();
+            answer.add(root.val);
+        }
+        searchBST(root.right);
+    }
+
+    public int[] findMode_2(TreeNode root) {
+        searchBST(root);
+        int[] mode = new int[answer.size()];
+        for (int i = 0; i < answer.size(); i++) {
+            mode[i] = answer.get(i);
+        }
+        return mode;
+    }
+
+
+
+
+
 }
