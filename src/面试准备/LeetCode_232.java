@@ -2,13 +2,14 @@ package 面试准备;
 
 import java.util.Stack;
 
-public class MyQueue {
+public class LeetCode_232 {
+
     // 双栈实现队列
     // 首先创建两个栈 stack1 和 stack2 其中stack1负责接收元素 stack2 弹出元素
     Stack<Integer> stack1 = null;
     Stack<Integer> stack2 = null;
     /** Initialize your data structure here. */
-    public MyQueue() {
+    public LeetCode_232() {
         stack1 = new Stack<>();
         stack2 = new Stack<>();
     }
