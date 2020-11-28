@@ -49,7 +49,7 @@ public class offer_7 {
             int rootIndex = indexMap.get(rootVal);
             // 左子树的个数就是 根节点的位置减去前序开始的位置，右子树的个数就是前序结束的位置到根节点的位置
             int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
-            // 构建左子树
+            // 构建左子树 新的根节点已经创建所以前序序列个数+1
             TreeNode leftSubtree = buildTree(preorder, preorderStart + 1, preorderStart + leftNodes, inorder, inorderStart, rootIndex - 1, indexMap);
             // 构建右子树
             TreeNode rightSubtree = buildTree(preorder, preorderEnd - rightNodes + 1, preorderEnd, inorder, rootIndex + 1, inorderEnd, indexMap);
@@ -57,6 +57,7 @@ public class offer_7 {
             root.left = leftSubtree;
             root.right = rightSubtree;
             return root;
+            // PS 从中序序列获取左右子树节点个数
         }
     }
 }
