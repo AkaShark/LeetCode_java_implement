@@ -41,7 +41,6 @@ public class offer_08 {
             // case2 节点没有右子树 且当前节点是左子树 则下个节点是当前节点的父节点
             nextp = parent;
         }
-        
         // 返回结果
         return nextp;
     }
