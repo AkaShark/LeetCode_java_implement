@@ -72,9 +72,9 @@ public class LeetCode_225 {
 Queue<Integer> list;
 
     /** Initialize your data structure here. */
-    public MyStack() {
-        list = new LinkedList<>();
-    }
+//    public MyStack() {
+//        list = new LinkedList<>();
+//    }
 
     /** Push element x onto stack. */
     public void push(int x) {

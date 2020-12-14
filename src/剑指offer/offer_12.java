@@ -5,6 +5,50 @@ public class offer_12 {
     // 利用回溯去上一个节点继续找 除了在边界的节点其他节点都是有四个选项
     // 回溯法的实现使用递归来实现
 
+    static public boolean exist(char[][] board, String words) {
+        if (board == null || board[0] == null || board.length == 0 || board[0].length == 0 || words == null || words.equals("")) return false;
+        char[] word = words.toCharArray();
+        boolean[][] visited = new boolean[board.length][board[0].length];
+        int pathLocal = 0;
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[0].length; col++) {
+                if (dfs(row, col, board.length, board[0].length, pathLocal, word, board, visited)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    static public boolean dfs(int row, int col, int rows, int cols, int pathLocal, char[] words, char[][] board, boolean[][] visited) {
+        if (pathLocal == words.length) return true;
+        if (row < 0 || row >= rows || col < 0 || col >= cols || words[pathLocal] != board[row][col] || visited[row][col]) return false;
+
+        visited[row][col] = true;
+        boolean isExit =  dfs(row + 1, col, rows, cols, pathLocal + 1, words, board, visited) ||
+                dfs(row - 1, col, rows, cols, pathLocal + 1, words, board, visited) ||
+                dfs(row, col - 1 , rows, cols, pathLocal + 1, words, board, visited) ||
+                dfs(row, col + 1, rows, cols, pathLocal + 1, words, board, visited);
+
+        visited[row][col] = false;
+        return isExit;
+    }
+
+    public static void main(String[] args) {
+        String example = "ab";
+        char[][] board = {{'a'}};
+        System.out.println(exist(board, example));
+
+        };
+
+    }
+
+
+
+
+
+
+
 //    public boolean exist(char[][] board, String word) {
 //        if (board == null || board[0].length == 0 || board.length == 0) return false;
 //        boolean[][] visited = new boolean[][]{{false}};
@@ -55,39 +99,33 @@ public class offer_12 {
     *   1. 返回false 行列越界 当前矩阵元素和目标字符不同 当前矩阵元素已经访问过了
     *   2. 返回true k = len(word) - 1 , 及字符串word已经全部遍历完*/
 
-    public boolean exist(char[][] board, String word) {
-        // 将word转成array
-        char[] words = word.toCharArray();
-        // 遍历矩阵的每个元素
-        for (int row = 0; row < board.length; row++) {
-            for (int col = 0; col < board[0].length; col++) {
-                if (dfs(board, words, row, col, 0)) return true;
-            }
-        }
-        return false;
-    }
+//    public boolean exist(char[][] board, String word) {
+//        // 将word转成array
+//        char[] words = word.toCharArray();
+//        // 遍历矩阵的每个元素
+//        for (int row = 0; row < board.length; row++) {
+//            for (int col = 0; col < board[0].length; col++) {
+//                if (dfs(board, words, row, col, 0)) return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    boolean dfs(char[][] board, char[] word, int row, int col, int k) {
+//        // bad case
+//        if (row >= board.length || row < 0 || col >= board[0].length || col < 0 || board[row][col] != word[k]) return false;
+//        // 遍历完了整字符串
+//        if (k == word.length - 1) return true;
+//        // 将遍历到的字符变成\0 防止重复访问 同时这样做不用设置visited数组节约内存空间
+//        board[row][col] = '\0';
+//        boolean res = dfs(board, word, row + 1, col, k + 1) ||
+//                      dfs(board, word, row - 1, col, k + 1) ||
+//                      dfs(board, word, row, col + 1, k + 1)  ||
+//                      dfs(board, word, row, col - 1, k + 1);
+//        // 将遍历到的字符变回去
+//        board[row][col] = word[k];
+//        return res;
+//
+//    }
 
-    boolean dfs(char[][] board, char[] word, int row, int col, int k) {
-        // bad case
-        if (row >= board.length || row < 0 || col >= board[0].length || col < 0 || board[row][col] != word[k]) return false;
-        // 遍历完了整字符串
-        if (k == word.length - 1) return true;
-        // 将遍历到的字符变成\0 防止重复访问 同时这样做不用设置visited数组节约内存空间
-        board[row][col] = '\0';
-        boolean res = dfs(board, word, row + 1, col, k + 1) ||
-                      dfs(board, word, row - 1, col, k + 1) ||
-                      dfs(board, word, row, col + 1, k + 1)  ||
-                      dfs(board, word, row, col - 1, k + 1);
-        // 将遍历到的字符变回去
-        board[row][col] = word[k];
-        return res;
-
-    }
-
-
-
-
-
-
-
-}
+//}

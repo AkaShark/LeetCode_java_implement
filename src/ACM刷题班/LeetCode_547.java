@@ -16,7 +16,6 @@ public class LeetCode_547 {
             }
         }
     }
-
     public int findCircleNum_0(int[][] M) {
         int[] visited = new int[M.length];
         int count = 0;
