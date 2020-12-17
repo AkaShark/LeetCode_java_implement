@@ -3,6 +3,8 @@ package 剑指offer;
 import static java.lang.Math.pow;
 
 public class offer_14 {
+
+    // 动态规划需要从上往下的思考，并且从下往上的解决问题（避免子问题重复计算）
     // 动态规划
     /*
     * 1. 任何大于1的数都可由2和3组成（根据奇数偶数证明）
@@ -47,6 +49,7 @@ public class offer_14 {
     }
 
 
+    // 贪心需要选择贪心策略 需要用数学的方法去证明
     /*
     * 贪心算法
     * 贪心策略：
