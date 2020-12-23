@@ -1,6 +1,7 @@
 package 剑指offer;
 
 public class offer_24 {
+//    纸上得来终觉浅，绝知此事要躬行
     public class ListNode {
         int val;
         ListNode next;

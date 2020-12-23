@@ -12,7 +12,6 @@ public class offer_25 {
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // l1 或者 l2 为空的情况
-
         if (l1 == null && l2 == null) return null;
         if (l1 == null) return l2;
         if (l2 == null) return l1;
@@ -28,9 +27,11 @@ public class offer_25 {
             cur = cur.next;
         }
 
-        if (l1 == null) cur.next = l2;
-        if (l2 == null) cur.next = l1;
+//        if (l1 == null) cur.next = l2;
+//        if (l2 == null) cur.next = l1;
+        // 考虑剩余节点的情况
 
+        cur.next = l1 != null ? l1 : l2;
         return dummy.next;
 
     }
