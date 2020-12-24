@@ -2,6 +2,7 @@ package 剑指offer;
 
 public class offer_21 {
 
+    // 类似快排的思想 可以使用函数指针将判断条件换成函数 提高 代码的复用性
     public int[] exchange_1(int[] nums) {
         if (nums.length == 0) return nums;
         int start = 0, end = nums.length - 1;

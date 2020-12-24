@@ -54,7 +54,7 @@ public class offer_quick_sort {
             arr[i] = temp;
 
         }
-        // swap  i和low位置元素互换
+        // swap  i和low位置元素互换 最后的时候low和iswap下
         arr[low] = arr[i];
         arr[i] = p;
 
