@@ -16,7 +16,7 @@ public class offer_39 {
 
         for (int i = 0; i < nums.length; i++) {
             if (!map.containsKey(nums[i])) {
-                map.put(nums[i], 0);
+                map.put(nums[i], 1);
             } else {
                 int temp = map.get(nums[i]) + 1;
                 map.put(nums[i], temp);
@@ -85,6 +85,25 @@ public class offer_39 {
         for (int num : nums)
             if (num == x) count++;
         return count > nums.length / 2 ? x : 0; // 当无众数的返回0
+
+    }
+
+    // hashmap优化
+    public int majorityElement_4(int[] nums) {
+        if (nums.length <= 0) return -1;
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(nums[i])) {
+                map.put(nums[i], 0);
+            } else {
+                int temp = map.get(nums[i]) + 1;
+                map.put(nums[i], temp);
+                if (map.get(nums[i]) >= nums.length / 2) return nums[i];
+            }
+        }
+        return -1;
 
     }
 }
