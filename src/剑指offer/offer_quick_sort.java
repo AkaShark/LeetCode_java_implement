@@ -19,7 +19,7 @@ public class offer_quick_sort {
     * */
 
     public static void main(String[] args) {
-        int[] array = new int[] {9,4,6,8,3,10,4,6};
+        int[] array = new int[] {3,2,3,1,2,4,5,5,6};
         quickSork(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
