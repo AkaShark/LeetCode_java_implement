@@ -34,11 +34,12 @@ public class offer_42 {
         return max;
     }
 
+    // 动态规划
     public int maxSubArray_2(int[] nums) {
         if (nums == null || nums.length == 0) return -1;
         if (nums.length == 1) return nums[0];
         int res = nums[0];
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 1; i < nums.length; i++) {
             nums[i] += Math.max(nums[i - 1], 0);
             res = Math.max(res, nums[i]);
         }
