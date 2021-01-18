@@ -1,5 +1,8 @@
 package 剑指offer;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class offer_45 {
     // 找规律问题
     // 让最高位的数 最小其中一步比较就是遍历数确定第二位也是小的
@@ -45,6 +48,23 @@ public class offer_45 {
         // i 就是中间的值了 index i移动了i变成了index 与 前两天做的快排不动 比较学习
         quickSort(strs, l, i - 1);
         quickSort(strs, i + 1, r);
+    }
+
+    public String minNumber_1(int[] nums) {
+        String[] strs = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            strs[i] = String.valueOf(nums[i]);
+        }
+        Arrays.sort(strs, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return (o1 + o2).compareTo(o2 + o1);
+            }
+        });
+        StringBuilder res = new StringBuilder();
+        for (String s: strs)
+            res.append(s);
+        return res.toString();
     }
 
 }
