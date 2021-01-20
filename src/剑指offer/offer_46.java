@@ -31,7 +31,7 @@ public class offer_46 {
 
     // 明天带入数据拿笔写写画画
     // f(i)=f(i−1)+f(i−2)[i−1≥0,10≤x≤25] 动态规划转移方程
-    public int translateNum(int num) {
+    public int translateNum_1(int num) {
         String src = String.valueOf(num);
         int p = 0, q = 0, r = 1;
         for (int i = 0; i < src.length(); i++) {
@@ -46,5 +46,19 @@ public class offer_46 {
             }
         }
         return r;
+    }
+
+    public int translateNum(int num) {
+        String s = String.valueOf(num);
+        int a = 1, b = 1; // a 是 i - 1 b是i - 2
+        for (int i = 2; i <= s.length(); i++) {
+            // i - 1  i
+            String tmp = s.substring(i - 2, i);
+            // 是否可以组合翻译
+            int c = tmp.compareTo("10") >= 0 && tmp.compareTo("25") <= 0? a+b : a;
+            b = a;
+            a = c;
+        }
+        return a; // i -1
     }
 }
