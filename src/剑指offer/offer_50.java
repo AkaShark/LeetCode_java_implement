@@ -38,17 +38,16 @@ public class offer_50 {
     }
 
     // 有序HashMap版本 不是有序么。。。
+    // 第二轮遍历的话有优化 因为第二轮遍历的是hash表后产生的hash表一定是小于等于chars的
     public char firstUniqChar(String s) {
+        // 有序hash表 LinkedHashMap 产生的hashMap的序列默认是插入的顺序
         Map<Character, Boolean> dic = new LinkedHashMap<>();
         char[] chars = s.toCharArray();
+        // 遍历
         for (char c: chars)
-            dic.put(c, !dic.containsKey(c));
-        for (char c : dic.keySet()) {
-            System.out.println(c);
-            System.out.println(dic.get(c));
-        }
-        for (Map.Entry<Character, Boolean> d :dic.entrySet()) {
-            if (d.getValue()) return d.getKey();
+            dic.put(c, !dic.containsKey(c)); // 如果包含的话一定是返回的false 第一次是true
+        for (Map.Entry<Character, Boolean> d :dic.entrySet()) { // 返回的是插入顺序 获取的是map的Entry
+            if (d.getValue()) return d.getKey(); // 获取第一个为true的
         }
         return ' ';
     }
