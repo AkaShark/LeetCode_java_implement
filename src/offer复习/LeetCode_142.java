@@ -1,5 +1,7 @@
 package offer复习;
 
+import java.util.HashSet;
+
 public class LeetCode_142 {
 /*
 * 给定一个链表，返回链表开始入环的第一个节点。如果链表无环，则返回null。
@@ -55,6 +57,19 @@ public class LeetCode_142 {
             }
         }
         return null;
+    }
+
+    // HashSet实现
+    public ListNode detectCycle_2(ListNode head) {
+        if (head == null) return head;
+        HashSet<ListNode> set = new HashSet<>();
+        while (head != null) {
+            if (set.contains(head)) return head;
+            set.add(head);
+            head = head.next;
+        }
+        return null;
+
     }
 
 
