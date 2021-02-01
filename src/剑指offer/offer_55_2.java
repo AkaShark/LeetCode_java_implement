@@ -16,13 +16,14 @@ public class offer_55_2 {
     // 左子树右子树高度差 中序遍历
     public boolean isBalanced(TreeNode root) {
         if (root == null) return true;
-        isBalanced(root.left);
+
         int leftH = 0, rightH = 0;
         leftH = TreeHeight(root.left);
         rightH = TreeHeight(root.right);
-        if (leftH - rightH > 1) {
+        if (Math.abs(leftH - rightH) > 1) {
             return false;
         }
+        isBalanced(root.left);
         isBalanced(root.right);
         return true;
     }
