@@ -1,8 +1,6 @@
 package 剑指offer;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class offer_55_1 {
     public class TreeNode {
@@ -75,6 +73,9 @@ public class offer_55_1 {
         }
         return res;
     }
+
+    // PS: 注意在使用队列的时候JDK 推荐是使用 Deque
+    // Deque<TreeNode> queue = new ArrayDeque<>();
 
 
 }
