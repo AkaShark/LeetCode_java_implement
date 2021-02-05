@@ -1,6 +1,6 @@
 package 剑指offer;
 
-public class offer_57 {
+public class offer_57_1 {
     /*输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可*/
     // 暴力破解 时间复杂度不过
     public int[] twoSum_1(int[] nums, int target) {
