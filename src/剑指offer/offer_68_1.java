@@ -74,5 +74,32 @@ public class offer_68_1 {
         return res;
     }
 
+    // 优化 减少判断取p q 的最大最小值
+    public TreeNode lowestCommonAncestor_2(TreeNode root, TreeNode p, TreeNode q) {
+            if (p.val > q.val) { // 保证 p.val < q.val
+                TreeNode tmp = p;
+                p = q;
+                q = tmp;
+            }
+            while (root != null) {
+                if (root.val < p.val) // p,q 都在 root 的右子树中
+                    root = root.right; // 遍历至右子节点
+                else if (root.val > q.val) // p,q 都在 root 的左子树中
+                    root = root.left; // 遍历至左子节点
+                else break;
+            }
+            return root;
+    }
+
+    //  递归实现 p q 在左子树 递归左子树 在右子树递归右子树
+    public TreeNode lowestCommonAncestor_3(TreeNode root, TreeNode p, TreeNode q) {
+        if(root.val < p.val && root.val < q.val)
+            return lowestCommonAncestor_3(root.right, p, q);
+        if(root.val > p.val && root.val > q.val)
+            return lowestCommonAncestor_3(root.left, p, q);
+        // 即不在做也不在右 则是结果 直接返回
+        return root;
+    }
+
 
 }
