@@ -81,7 +81,7 @@ public class offer_68_2 {
         if(right == null) return left;
         return root;
     }
-    
+
     public TreeNode lowestCommonAncestor_3(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null) return null; // 如果树为空，直接返回null
         if(root == p || root == q) return root; // 如果 p和q中有等于 root的，那么它们的最近公共祖先即为root（一个节点也可以是它自己的祖先）
