@@ -7,9 +7,9 @@ public class offer_59_2 {
     // 均摊时间复杂度为O(1) 这样的话利用辅助空间
     int queueA[] = new int[20000];
     int begin = 0, end = 0;
-    public MaxQueue() {
-
-    }
+//    public MaxQueue() {
+//
+//    }
 
     public int max_value() {
         int res = -1;
