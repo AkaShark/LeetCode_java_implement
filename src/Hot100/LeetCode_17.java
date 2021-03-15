@@ -48,10 +48,69 @@ public class LeetCode_17 {
         }
     }
 
-    // 队列实现
-    public List<String> letterCombinations(String digits) {
 
+    public List<String> letterCombinations(String digits) {
+        List<String> combinations = new ArrayList<>();
+        if (digits.length() == 0) return combinations;
+        backtrack(combinations, digits, 0, new StringBuffer());
+        return combinations;
     }
 
+    public void backtrack(List<String> combinations, String digits, int index, StringBuffer combination) {
+        if (index == digits.length()) {
+            combinations.add(combination.toString());
+        } else {
+            char digit = digits.charAt(index);
+            String letters = phone.get(digit);
+            int lettersCount = letters.length();
+            for (int i = 0; i < lettersCount; i++) {
+                combination.append(letters.charAt(i));
+                backtrack(combinations, digits, index + 1, combination);
+                combination.deleteCharAt(index);
+            }
+
+        }
+    }
+
+    // 队列实现 最终的queue就是结果
+    public List<String> letterCombinations_2(String digits) {
+        Queue<String> queue = new LinkedList<String>();
+        List<String> phone=new ArrayList<>();
+        if(digits.length()==0) return new ArrayList<String>();
+        phone.add("abc");
+        phone.add("def");
+        phone.add("ghi");
+        phone.add("jkl");
+        phone.add("mno");
+        phone.add("pqrs");
+        phone.add("tuv");
+        phone.add("wxyz");
+
+        // 第一个
+        int index0 = digits.charAt(0) - '0';
+        String abc0 = phone.get(index0 - 2);
+        for (int k = 0; k < abc0.length(); k++) {
+            String ll = abc0.substring(k, k + 1);
+            queue.add(ll); // 第一个添加到队列中
+        }
+
+        // 后序的拼接 添加了一个
+        for (int i = 1; i < digits.length(); i++) {
+            int index = digits.charAt(i) - '0';
+            // 下一个String
+            String abc = phone.get(index - 2);
+            // 队列中有几个元素
+            int current = queue.size();
+            for (int l = 0; l < current; l++) {
+                for (int k = 0; k < abc.length(); k++) {
+                    String ll = queue.peek() + abc.substring(k, k + 1);
+                    queue.add(ll); // 添加到队列中
+                }
+                queue.poll();
+            }
+        }
+
+        return (List<String>) queue;
+    }
 
 }
