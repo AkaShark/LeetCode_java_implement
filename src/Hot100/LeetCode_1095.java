@@ -14,7 +14,7 @@ public class LeetCode_1095 {
     }
 
     // 使用二分法 不断的缩小问题的规模
-    public int findInMountainArray(int target, MountainArray mountainArr) {
+    public int findInMountainArray_1(int target, MountainArray mountainArr) {
         if (mountainArr == null || mountainArr.length() == 0) return -1;
         int l_res, r_res;
         // 山顶
@@ -68,4 +68,44 @@ public class LeetCode_1095 {
         }
         return left;
     }
+
+    // LeetCode
+    public  int findInMountainArray(int target, MountainArray mountainArr) {
+        int l = 0, r = mountainArr.length() - 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (mountainArr.get(mid) < mountainArr.get(mid + 1)) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+        int peek = l;
+        int index = binarySearch(mountainArr, target, 0, peek, true); // 升序序列
+        if (index != -1)
+            return index;
+        return binarySearch(mountainArr, target, peek + 1, mountainArr.length() - 1, false); // 降序序列
+    }
+
+    // 标准的二分法
+    public int binarySearch(MountainArray mountainArray, int target, int l, int r, boolean flag) {
+        if (!flag) {
+            target *= -1;
+        }
+        while (l <= r){
+            int mid = (l + r) / 2;
+            int cur = mountainArray.get(mid) * (flag ? 1 : -1);
+            if (cur == target) {
+                return mid;
+            } else if (cur < target) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return  -1; // 没有找到
+    }
+
+
+
 }
