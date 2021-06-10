@@ -27,7 +27,7 @@ public class TreeLastOrder {
         TreeNode node = root;
         TreeNode lastVisit = root;
         while (node != null || !stack.isEmpty()) {
-            while (node != null) {
+            while (node != null) { // 开始先遍历左节点
                 stack.push(node);
                 node = node.left;
             }
