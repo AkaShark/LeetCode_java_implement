@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 /*
 * 对于这类寻找所有可行解的题，我们都可以尝试用「搜索回溯」的方法来解决。
-* 和剑指offer上的机器人找路径的很相似 总结下
+* 和剑指offer上的机器人找路径的很相似 总结下 
 */
 public class LeetCode_39 {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
