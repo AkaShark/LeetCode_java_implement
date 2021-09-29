@@ -27,7 +27,7 @@ public class LeetCode_3 {
         return -1;
     }
 
-    // 原地交换 
+    // 原地交换
     public int findRepeatNumber(int[] nums) {
        int i = 0;
        while (i < nums.length) {
