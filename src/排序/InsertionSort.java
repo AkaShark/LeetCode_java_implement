@@ -1,2 +1,5 @@
-package 排序;public class InsertionSort {
+package 排序;
+
+public class InsertionSort {
+
 }
