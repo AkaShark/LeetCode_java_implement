@@ -7,6 +7,8 @@ public class LeetCode_344 {
             char temp = s[left];
             s[left] = s[right];
             s[right] = temp;
+            left ++;
+            right --;
         }
         return;
     }
