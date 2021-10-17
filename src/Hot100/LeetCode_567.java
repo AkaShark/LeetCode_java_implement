@@ -55,7 +55,7 @@ public class LeetCode_567 {
     }
 
     // 对比上面的方法只对于改变的量进行判断
-    public boolean checkInclusion_1(String s1, String s2) {
+    public boolean checkInclusion_2(String s1, String s2) {
         int n = s1.length(), m = s2.length();
         if (n > m) {
             return false;
